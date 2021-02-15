@@ -4,7 +4,7 @@ const Command = require('../../lib/command/Command')
 
 class RemoveCommand extends Command {
   constructor (client) {
-    super(client, 'list')
+    super(client, 'help')
   }
 
   async execute (msg) {
