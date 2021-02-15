@@ -8,10 +8,9 @@ class RemoveCommand extends Command {
   }
 
   async execute (msg) {
-    const result = await this.client.whitelist.list()
-    const list = result.split('players: ')[1].split(', ')
+    const list = this.client.commands.keyArray()
     const embed = new MessageEmbed()
-      .addField({ name: `${process.env.EMOJI_INFO} Whitelisted Players`, value: list.map(user => `\`${user}\``).join(', ') })
+      .addField({ name: `${process.env.EMOJI_INFO} All Commands`, value: list.map(command => `\`${command}\``).join(', ') })
       .setTimestamp(new Date())
       .setColor(0x0FABDD)
     msg.channel.send(embed)
