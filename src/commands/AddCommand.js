@@ -25,7 +25,7 @@ class AddCommand extends Command {
     })
   }
 
-  handle (msg, args, results) {
+  async handle (msg, args, results) {
     const proceedAdd = []
     const foundResults = []
     const notFoundResults = []
