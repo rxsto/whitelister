@@ -9,7 +9,7 @@ class AddCommand extends Command {
   }
 
   execute (msg, args) {
-    if (!this.client.owners.find(msg.author.id)) return
+    if (!this.client.owners.find(owner => owner === msg.author.id)) return
     console.info(`Trying to add ${args.length === 1 ? 'user' : 'users'} ${args.join(', ')}...`)
     const executions = []
     args.forEach(arg => executions.push(c(`https://api.mojang.com/users/profiles/minecraft/${arg}`).send()))
