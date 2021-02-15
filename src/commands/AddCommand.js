@@ -33,7 +33,8 @@ class AddCommand extends Command {
     for (let i = 0; i < results.length; i++) {
       const result = results[i]
       if (result.statusCode === 200) {
-        proceedAdd.push(result)
+        const body = await result.json()
+        proceedAdd.push(body)
         foundResults.push(args[i])
       } else if (result.statusCode === 204) {
         notFoundResults.push(args[i])
