@@ -9,6 +9,7 @@ class RemoveCommand extends Command {
   }
 
   execute (msg, args) {
+    if (!this.client.owners.find(msg.author.id)) return
     console.info(`Trying to remove ${args.length === 1 ? 'user' : 'users'} ${args.join(', ')}...`)
     const executions = []
     args.forEach(arg => executions.push(c(`https://api.mojang.com/users/profiles/minecraft/${arg}`).send()))
