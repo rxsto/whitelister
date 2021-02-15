@@ -11,7 +11,7 @@ class RemoveCommand extends Command {
     const result = await this.client.whitelist.list()
     const list = result.split('players: ')[1].split(', ')
     const embed = new MessageEmbed()
-      .addField(`${process.env.EMOJI_INFO} Whitelisted Players`, list.map(user => `\`${user}\``).join(', '))
+      .addField(`${process.env.EMOJI_INFO} Players`, list.map(user => `\`${user}\``).join(', '))
       .setTimestamp(new Date())
       .setColor(0x0FABDD)
     msg.channel.send(embed)
