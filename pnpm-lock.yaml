@@ -2,6 +2,7 @@ dependencies:
   centra: 2.4.2
   discord.js: 12.5.1
   dotenv: 8.2.0
+  figlet: 1.5.0
   rcon-client: 4.2.3
 lockfileVersion: 5.2
 packages:
@@ -76,6 +77,12 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-i/2XbnSz/uxRCU6+NdVJgKWDTM427+MqYbkQzD321DuCQJUqOuJKIA0IM2+W2xtYHdKOmZ4dR6fExsd4SXL+WQ==
+  /figlet/1.5.0:
+    dev: false
+    engines:
+      node: '>= 0.4.0'
+    resolution:
+      integrity: sha512-ZQJM4aifMpz6H19AW1VqvZ7l4pOE9p7i/3LyxgO2kp+PO/VcDYNqIHEMtkccqIhTXMKci4kjueJr/iCQEaT/Ww==
   /mime-db/1.45.0:
     dev: false
     engines:
@@ -150,4 +157,5 @@ specifiers:
   centra: ^2.4.2
   discord.js: ^12.5.1
   dotenv: ^8.2.0
+  figlet: ^1.5.0
   rcon-client: ^4.2.3
