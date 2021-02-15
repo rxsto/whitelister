@@ -7,7 +7,7 @@ class UserAddService extends Service {
 
   add (users) {
     const executions = []
-    console.info(`Adding ${users.length === 1 ? 'user' : 'users'} ${users.join(', ')}...`)
+    console.info(`Adding ${users.length === 1 ? 'user' : 'users'} ${users.map(user => user.name).join(', ')}...`)
     users.forEach(user => this.client.rcon.send(`whitelist add ${user.name}`))
     Promise.all(executions).then(results => {
       console.info(results.join('\n'))
