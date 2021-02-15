@@ -14,7 +14,9 @@ class ReconnectService extends Service {
     })
     this.client.rcon.on('end', () => {
       console.warn('RCON session ended abruptly! Attempting to reconnect in 1000ms...')
-      this.reconnect()
+      setTimeout(() => {
+        this.reconnect()
+      }, 1000)
     })
     this.client.rcon.on('error', (err) => {
       console.error(err.message)
