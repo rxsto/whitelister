@@ -1,0 +1,17 @@
+{
+  "name": "whitelister",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ."
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "centra": "^2.4.2",
+    "discord.js": "^12.5.1",
+    "dotenv": "^8.2.0",
+    "rcon-client": "^4.2.3"
+  }
+}
