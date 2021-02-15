@@ -3,13 +3,13 @@ const { MessageEmbed } = require('discord.js')
 
 const Command = require('../../lib/command/Command')
 
-class AddCommand extends Command {
+class RemoveCommand extends Command {
   constructor (client) {
-    super(client, 'add')
+    super(client, 'remove')
   }
 
   execute (msg, args) {
-    console.info(`Trying to add ${args.length === 1 ? 'user' : 'users'} ${args.join(', ')}...`)
+    console.info(`Trying to remove ${args.length === 1 ? 'user' : 'users'} ${args.join(', ')}...`)
     const executions = []
     args.forEach(arg => executions.push(c(`https://api.mojang.com/users/profiles/minecraft/${arg}`).send()))
     Promise.all(executions).then(results => {
@@ -26,7 +26,7 @@ class AddCommand extends Command {
   }
 
   async handle (msg, args, results) {
-    const proceedAdd = []
+    const proceedRemove = []
     const foundResults = []
     const notFoundResults = []
     const unknownResults = []  
@@ -34,7 +34,7 @@ class AddCommand extends Command {
       const result = results[i]
       if (result.statusCode === 200) {
         const body = await result.json()
-        proceedAdd.push(body)
+        proceedRemove.push(body)
         foundResults.push(args[i])
       } else if (result.statusCode === 204) {
         notFoundResults.push(args[i])
@@ -44,7 +44,7 @@ class AddCommand extends Command {
     }
     const fields = []
     if (foundResults.length > 0) {
-      fields.push({ name: `${process.env.EMOJI_CHECK} Success`, value: `Adding ${foundResults.length === 1 ? 'user' : 'users'} ${foundResults.map(user => `\`${user}\``).join(', ')}` })
+      fields.push({ name: `${process.env.EMOJI_CHECK} Success`, value: `Removing ${foundResults.length === 1 ? 'user' : 'users'} ${foundResults.map(user => `\`${user}\``).join(', ')}` })
     }
     if (notFoundResults.length > 0) {
       fields.push({ name: `${process.env.EMOJI_ERROR} Not Found`, value: `Didn't find ${notFoundResults.length === 1 ? 'user' : 'users'} ${notFoundResults.map(user => `\`${user}\``).join(', ')}` })
@@ -57,8 +57,8 @@ class AddCommand extends Command {
       .setTimestamp(new Date())
       .setColor(0x0FABDD)
     msg.channel.send(embed)
-    this.client.whitelist.add(proceedAdd)
+    this.client.whitelist.remove(proceedRemove)
   }
 }
 
-module.exports = AddCommand
+module.exports = RemoveCommand
