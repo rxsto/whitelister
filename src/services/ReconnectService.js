@@ -13,24 +13,11 @@ class ReconnectService extends Service {
       console.info('Successfully authenticated RCON session!')      
     })
     this.client.rcon.on('end', () => {
-      console.warn('RCON session ended abruptly! Attempting reconnect in 1000ms...')
-      setTimeout(() => {
-        try {
-          this.reconnect()
-        } catch (err) {
-          console.error('Failed to initialize reconnect loop! Aborting...')
-        }
-      }, 1000)
+      console.warn('RCON session ended abruptly! Attempting to reconnect in 1000ms...')
+      this.reconnect()
     })
     this.client.rcon.on('error', (err) => {
-      if (err.message.includes('ECONNREFUSED')) {
-        console.error('Failed to reconnect to RCON session! Retrying in 5000ms...')
-        setTimeout(() => {
-          this.reconnect()
-        }, 5000)
-      } else {
-        console.error(err.message)
-      }
+      console.error(err.message)
     })
   }
 
