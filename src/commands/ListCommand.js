@@ -8,7 +8,7 @@ class RemoveCommand extends Command {
   }
 
   async execute (msg) {
-    const list = await this.client.whiteListService.list()
+    const list = await this.client.whitelist.list()
     const embed = new MessageEmbed()
       .setTitle(`All whitelisted players`)
       .setDescription(list)

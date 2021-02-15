@@ -57,7 +57,7 @@ class AddCommand extends Command {
       .setTimestamp(new Date())
       .setColor(0x0FABDD)
     msg.channel.send(embed)
-    this.client.whiteListService.add(proceedAdd)
+    this.client.whitelist.add(proceedAdd)
   }
 }
 

@@ -57,7 +57,7 @@ class RemoveCommand extends Command {
       .setTimestamp(new Date())
       .setColor(0x0FABDD)
     msg.channel.send(embed)
-    this.client.whiteListService.remove(proceedRemove)
+    this.client.whitelist.remove(proceedRemove)
   }
 }
 
